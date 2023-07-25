@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
+    "vant": "^4.6.3",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.3",
@@ -52,7 +53,6 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": "vue-cli-service lint",
     "*.css": "stylelint --fix",
     "*.{js,ts,css,md,vue}": "prettier --write \"./src/**/*.{js,ts,jsx,json,tsx,vue,css,less,sass}\""
   }
