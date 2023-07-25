@@ -52,7 +52,12 @@ export default defineComponent({
         .then(async () => {
           const status = await userService.login(state.formState.value);
           console.log(status);
-          // if(status.data.code==200)
+          if (!status) {
+            state.formState.value = new UserManageType.LoginFormState();
+            return;
+          } else {
+            window.location.href = "/home";
+          }
         })
         .catch((err: any) => {
           console.log(err);
