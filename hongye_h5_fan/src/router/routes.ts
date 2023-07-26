@@ -1,7 +1,9 @@
 import { RouteRecordRaw } from "vue-router";
 
 import footer from "./routes/footer";
+import gird from "./routes/gird";
 export const routes: Array<RouteRecordRaw> = [
+  ...gird,
   {
     path: "/",
     redirect: "/login",

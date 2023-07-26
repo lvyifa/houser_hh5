@@ -1,33 +1,32 @@
 <template>
   <div class="main">
-    <header>头部</header>
+    <Header />
     <main>
       <router-view></router-view>
     </main>
-    <footer>底部</footer>
+    <Footer />
   </div>
 </template>
 
-<script lang="ts" setup></script>
-
+<script lang="ts">
+import { defineComponent } from "vue";
+import Footer from "@/components/layout/footer.vue";
+import Header from "@/components/layout/header.vue";
+export default defineComponent({
+  components: {
+    Footer,
+    Header,
+  },
+  setup() {
+    return {};
+  },
+});
+</script>
 <style>
 .main {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: start;
-}
-header {
-  width: 100%;
-  height: 50px;
-}
-main {
-  flex: 1;
-}
-footer {
-  width: 100%;
-  height: 50px;
 }
 </style>
