@@ -1,4 +1,6 @@
 import { RouteRecordRaw } from "vue-router";
+
+import footer from "./routes/footer";
 export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -9,6 +11,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: "home",
     component: () =>
       import(/* webpackChunkName: "Home" */ "@/views/home/index.vue"),
+    children: [...footer],
   },
   {
     path: "/login",
