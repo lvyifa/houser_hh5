@@ -1,5 +1,5 @@
 <template>
-  <van-tabbar v-model="active">
+  <van-tabbar v-model="active" active-color="#ee0a24" inactive-color="#000">
     <van-tabbar-item icon="home-o"
       ><router-link to="/home/homepage">首页</router-link></van-tabbar-item
     >
