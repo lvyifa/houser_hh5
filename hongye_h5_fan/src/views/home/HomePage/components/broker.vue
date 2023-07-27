@@ -3,7 +3,9 @@
   <div>
     <div class="broker_nav">
       <b>经纪人</b>
-      <span>更多</span>
+      <router-link to="/gird/broker">
+        <span>更多</span>
+      </router-link>
     </div>
     <div class="broker_main">
       <van-swipe class="my-swipe" indicator-color="white">

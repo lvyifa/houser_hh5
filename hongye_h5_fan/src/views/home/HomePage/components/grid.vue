@@ -244,7 +244,7 @@
         </router-link>
       </van-grid-item>
       <van-grid-item>
-        <router-link to="/gird/informationpag">
+        <router-link to="/gird/informationpage">
           <svg
             t="1690342358488"
             class="icon"

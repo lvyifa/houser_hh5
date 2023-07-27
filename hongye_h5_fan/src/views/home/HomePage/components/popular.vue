@@ -2,7 +2,9 @@
   <div>
     <div class="popular_nav">
       <b>热门楼盘</b>
-      <span>更多</span>
+      <router-link to="/gird/buyhouse">
+        <span>更多</span>
+      </router-link>
     </div>
     <div class="popular_main">
       <dl>

@@ -2,7 +2,9 @@
   <div>
     <div class="circle_nav">
       <b>楼市资讯</b>
-      <span>更多</span>
+      <router-link to="/gird/informationpage">
+        <span>更多</span>
+      </router-link>
     </div>
     <div class="circle_card">
       <ul>

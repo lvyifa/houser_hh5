@@ -1,9 +1,17 @@
 <template>
-  <div class="container">
+  <div class="inter">
     <div class="navbar">
       <span @click="onClickLeft">&lt;</span>
-      <span>资讯</span>
-      <span></span>
+      <span>信息</span>
+      <span> </span>
+    </div>
+    <div class="system_main">
+      <van-cell value="上午7:00" class="cell">
+        <template #title>
+          <p class="p1">您好，您发布的二手房出售已经审核通过了</p>
+          <p><a href="">点击查看</a></p>
+        </template>
+      </van-cell>
     </div>
   </div>
 </template>
@@ -27,5 +35,12 @@ const onClickLeft = () => history.back();
     font-size: 22px;
     padding-top: 20px;
   }
+}
+
+.p1 {
+  width: 280px;
+}
+a {
+  color: blue;
 }
 </style>

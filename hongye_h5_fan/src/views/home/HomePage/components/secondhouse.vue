@@ -2,7 +2,9 @@
   <div>
     <div class="second_nav">
       <b>二手房</b>
-      <span>更多</span>
+      <router-link to="/gird/buyhouse">
+        <span>更多</span>
+      </router-link>
     </div>
     <div class="second_main">
       <dl>
