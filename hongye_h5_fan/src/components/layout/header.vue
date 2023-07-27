@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header">
     <div class="nav">宏烨找房</div>
     <van-search
       v-model="value"
@@ -43,5 +43,12 @@ const onClickButton = () => Toast(value.value);
     red
   );
   color: #f00;
+}
+.header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  z-index: 55;
 }
 </style>
