@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div>
     <div class="nav">宏烨找房</div>
     <van-search
       v-model="value"
@@ -26,10 +26,6 @@ const onClickButton = () => Toast(value.value);
 </script>
 
 <style lang="less">
-.header {
-  width: 100%;
-  height: 74px;
-}
 .nav {
   background: skyblue;
 }

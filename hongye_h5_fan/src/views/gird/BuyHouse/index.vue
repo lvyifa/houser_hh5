@@ -1,9 +1,7 @@
 <template>
-  <div>买房</div>
+  <div class="container"></div>
 </template>
 
-<script>
-export default {};
-</script>
+<script lang="ts" setup></script>
 
-<style></style>
+<style lang="less"></style>

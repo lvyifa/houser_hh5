@@ -17,10 +17,12 @@ import {
   Grid,
   GridItem,
 } from "vant";
+import Vant from "vant";
 const app = createApp(App);
 app.use(store);
 app.use(router);
 app.mount("#app");
+app.use(Vant);
 app.use(Button);
 app.use(Form);
 app.use(Field);

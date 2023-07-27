@@ -56,7 +56,7 @@ export default defineComponent({
             state.formState.value = new UserManageType.LoginFormState();
             return;
           } else {
-            window.location.href = "/home";
+            window.location.href = "/home/homepage";
           }
         })
         .catch((err: any) => {
