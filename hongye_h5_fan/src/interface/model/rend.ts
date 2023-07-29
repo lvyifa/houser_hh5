@@ -1,0 +1,40 @@
+export namespace RendManageType {
+  export class getrendState {
+    id?: string | undefined;
+    area?: string | undefined;
+    name?: string | undefined;
+    pageCount?: number | undefined;
+    pageSize?: number | undefined;
+  }
+  export class renddataState {
+    id?: string | undefined;
+    area?: string | undefined;
+    name?: string | undefined;
+    pageCount?: number | undefined;
+    pageSize?: number | undefined;
+    created_at?: string | undefined;
+    cx?: string | undefined;
+    ditie?: string | undefined;
+    dt?: string | undefined;
+    fangxing?: string | undefined;
+    fs?: string | undefined;
+    img?: string | undefined;
+    jiage?: string | undefined;
+    jjr?: string | undefined;
+    ll?: string | undefined;
+    lx?: string | undefined;
+    lz?: string | undefined;
+    mianji?: string | undefined;
+    pp?: string | undefined;
+    qs?: string | undefined;
+    quyu?: string | undefined;
+    status?: string | undefined;
+    ts?: string | undefined;
+    updated_at?: string | undefined;
+    xq?: string | undefined;
+    yt?: string | undefined;
+    zf?: string | undefined;
+    zq?: string | undefined;
+    zx?: string | undefined;
+  }
+}

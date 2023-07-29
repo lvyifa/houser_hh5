@@ -22,7 +22,7 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .max {
   width: 100%;
   height: 100%;

@@ -7,45 +7,59 @@
       </router-link>
     </div>
     <div class="popular_main">
-      <dl>
+      <dl v-for="(item, index) in renddata" :key="index">
         <dt>
           <img
-            src="https://img0.baidu.com/it/u=890651766,3437002912&fm=253&fmt=auto&app=138&f=JPEG?w=643&h=500"
+            :src="item.img"
             alt=""
+            onerror="this.src='https://img1.baidu.com/it/u=3477470254,523159555&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'"
           />
         </dt>
         <dd>
-          <p><b class="tit_b">石景区 紧邻龙湖天街s1生活配套齐全</b></p>
-          <p>42平/2室 1厅 / 远洋新天地</p>
           <p>
-            <b class="prive_b">114.98万</b>
+            <b class="tit_b">{{ item.xq }} {{ item.name }}</b>
+          </p>
+          <p>
+            {{ item.mianji }}平/{{ item.ll }}室 {{ item.fangxing }} /
+            {{ item.quyu }}
+          </p>
+          <p>
+            <b class="prive_b">{{ item.jiage }}万</b>
             <span class="price_s">12100元/m²</span>
           </p>
-          <p><button>小区</button></p>
-        </dd>
-      </dl>
-      <dl>
-        <dt>
-          <img
-            src="https://img0.baidu.com/it/u=890651766,3437002912&fm=253&fmt=auto&app=138&f=JPEG?w=643&h=500"
-            alt=""
-          />
-        </dt>
-        <dd>
-          <p><b class="tit_b">石景区 紧邻龙湖天街s1生活配套齐全</b></p>
-          <p>42平/2室 1厅 / 远洋新天地</p>
           <p>
-            <b class="prive_b">114.98万</b>
-            <span class="price_s">12100元/m²</span>
+            <button>{{ item.lz }}</button>
           </p>
-          <p><button>小区</button></p>
         </dd>
       </dl>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { RendService } from "@/api/rend";
+import { onMounted, ref, computed } from "vue";
+import { useStore } from "vuex";
+import { RendManageType } from "@/interface/model/rend";
+const store = useStore();
+const Rendservice = RendService();
+const renddata = ref<Array<RendManageType.renddataState>>([]);
+const pass = async () => {
+  const stauts = await Rendservice.rend({
+    name: "",
+    area: "",
+  });
+  console.log(stauts);
+  if (stauts.code == 200) {
+    renddata.value = stauts.data;
+    store.commit({ type: "rend/getrendlist", payload: stauts.data });
+  }
+};
+
+onMounted(() => {
+  pass();
+});
+</script>
 
 <style lang="less">
 .popular_nav {
@@ -69,6 +83,7 @@
   // border: solid 1px #f00;
   border-bottom: 1px solid #f00;
   margin: 0 auto;
+  overflow-y: scroll;
   dl {
     display: flex;
     width: 100%;
