@@ -317,17 +317,8 @@ const onConfirmgroup2 = () => {
 //数据页面
 
 const renddata = ref();
-// const pass = async (params: any) => {
-//   const status = await audService.setaudit({
-//     content: {
-//       state: "审核通过",
-//       id: params.record.id,
-//     },
-//   });
-// };
 onMounted(() => {
   renddata.value = toValue(computed(() => store.state.rend.renddata));
-  // console.log(computed(() => store.state.rend.renddata));
 });
 </script>
 
