@@ -402,7 +402,7 @@
 export default {};
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .grid {
   width: 100%;
   height: 200px;

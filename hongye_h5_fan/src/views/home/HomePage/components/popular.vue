@@ -61,7 +61,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .popular_nav {
   width: 100%;
   height: 50px;

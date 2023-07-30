@@ -47,7 +47,7 @@
 
 <script lang="ts" setup></script>
 
-<style lang="less">
+<style lang="less" scoped>
 .second_nav {
   width: 100%;
   height: 50px;
