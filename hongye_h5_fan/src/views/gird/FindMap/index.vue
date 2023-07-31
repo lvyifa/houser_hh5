@@ -99,8 +99,8 @@
 <script lang="ts" setup>
 import { areaList } from "@vant/area-data"; //获取地址数据
 import { showToast } from "@nutui/nutui";
-import { useStore } from "vuex";
 import { ref, computed, onMounted, toValue } from "vue"; //ref
+import { useStore } from "vuex";
 const onClickLeft = () => history.back(); //返回上一页
 const defarea = ref("北京市"); //初始化地址
 const areaflag = ref(false); //默认不显示地址选项
