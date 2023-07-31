@@ -1,3 +1,4 @@
+<!--  @typescript-eslint/no-this-alias -->
 <template>
   <div class="buyhouse">
     <div class="navbar">
@@ -91,6 +92,7 @@
         </van-dropdown-menu>
       </div>
     </div>
+    <div class="map_container" ref="mapRef">132</div>
   </div>
 </template>
 
@@ -153,7 +155,6 @@ const gridlist: any = [
 const value = ref([100, 666]);
 const onChange = (value) => showToast.text("当前值：" + value);
 //dropdown第三部分
-
 const item3_data1 = ref([
   {
     text: "不限",
@@ -223,11 +224,11 @@ const item4_data3 = ref([
     text: "南北",
   },
 ]);
-const checked = ref<number>(0);
-const checked1 = ref<number>(0);
-const checked2 = ref<number>(0);
-const checked3 = ref<number>(0);
-const checked4 = ref<number>(0);
+const checked = ref(0);
+const checked1 = ref(0);
+const checked2 = ref(0);
+const checked3 = ref(0);
+const checked4 = ref(0);
 const onConfirmgroup1 = () => {
   menuRef.value.close();
   console.log(item3_data1.value[checked.value].text);
@@ -251,17 +252,77 @@ const option1 = [
 //数据页面
 
 const renddata = ref();
-// const pass = async (params: any) => {
-//   const status = await audService.setaudit({
-//     content: {
-//       state: "审核通过",
-//       id: params.record.id,
-//     },
-//   });
-// };
+
+const BMapGL = window.BMapGL;
+const mapRef = ref();
 onMounted(() => {
   renddata.value = toValue(computed(() => store.state.rend.renddata));
-  // console.log(computed(() => store.state.rend.renddata));
+  const map = new BMapGL.Map(mapRef.value);
+  const point = new BMapGL.Point(116.404, 39.915);
+  map.centerAndZoom(point, 10);
+  function ComplexCustomOverlay(point, text, mouseoverText) {
+    this._point = point;
+    this._text = text;
+    this._overText = mouseoverText;
+  }
+  ComplexCustomOverlay.prototype = new BMapGL.Overlay();
+  ComplexCustomOverlay.prototype.initialize = function (map) {
+    this._map = map;
+    var div = (this._div = document.createElement("div"));
+    div.style.position = "absolute";
+    div.style.zIndex = BMapGL.Overlay.getZIndex(this._point.lat);
+    div.style.backgroundColor = "#EE5D5B";
+    div.style.border = "1px solid #BC3B3A";
+    div.style.color = "white";
+    div.style.height = "18px";
+    div.style.padding = "2px";
+    div.style.lineHeight = "18px";
+    div.style.whiteSpace = "nowrap";
+    div.style.MozUserSelect = "none";
+    div.style.fontSize = "12px";
+    var span = (this._span = document.createElement("span"));
+    div.appendChild(span);
+    span.appendChild(document.createTextNode(this._text));
+
+    var arrow = (this._arrow = document.createElement("div"));
+    arrow.style.background =
+      "url(//map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
+    arrow.style.position = "absolute";
+    arrow.style.width = "11px";
+    arrow.style.height = "10px";
+    arrow.style.top = "22px";
+    arrow.style.left = "10px";
+    arrow.style.overflow = "hidden";
+    div.appendChild(arrow);
+
+    map.getPanes().labelPane.appendChild(div);
+
+    return div;
+  };
+  ComplexCustomOverlay.prototype.draw = function () {
+    var map = this._map;
+    var pixel = map.pointToOverlayPixel(this._point);
+    this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+    this._div.style.top = pixel.y - 30 + "px";
+  };
+
+  const marker = new BMapGL.Marker(new BMapGL.Point(116.404, 39.925));
+  map.addOverlay(marker);
+  map.enableScrollWheelZoom(true);
+  const txt = "银湖海岸城";
+  const mouseoverTxt = txt + " " + parseInt(Math.random() * 1000, 10) + "套";
+
+  var scaleCtrl = new BMapGL.ScaleControl(); // 添加比例尺控件
+  map.addControl(scaleCtrl);
+  var zoomCtrl = new BMapGL.ZoomControl(); // 添加缩放控件
+  map.addControl(zoomCtrl);
+
+  var myCompOverlay = new ComplexCustomOverlay(
+    new BMapGL.Point(116.407845, 39.9141),
+    txt,
+    mouseoverTxt
+  );
+  map.addControl(myCompOverlay);
 });
 </script>
 
@@ -393,5 +454,10 @@ onMounted(() => {
       }
     }
   }
+}
+.map_container {
+  width: 100%;
+  height: 400px;
+  border: solid 2px #000;
 }
 </style>
