@@ -1,3 +1,9 @@
+/*
+ * @Author: yifan
+ * @Date: 2023-07-31 15:31:38
+ * @Last Modified by:   yifan
+ * @Last Modified time: 2023-07-31 15:31:38
+ */
 import { request, axios } from "@/utils/request";
 import { API_GROUP } from "@/config/api/group";
 import store from "@/store";
