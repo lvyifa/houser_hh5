@@ -32,7 +32,6 @@ const onClickLeft = () => history.back();
 import { usegroupService } from "@/api/group";
 import { onMounted, ref, computed } from "vue";
 import { useStore } from "vuex";
-
 const store = useStore();
 const groupService = usegroupService();
 const groupdata = ref();
