@@ -5,11 +5,20 @@
       <span>直播看房</span>
       <span></span>
     </div>
+    <div class="live_main">
+      <van-tabs v-model:active="active" type="card">
+        <van-tab title="标签 1">内容 1</van-tab>
+        <van-tab title="标签 2">内容 2</van-tab>
+        <van-tab title="标签 3">内容 3</van-tab>
+      </van-tabs>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 const onClickLeft = () => history.back();
+import { onMounted, ref, computed } from "vue";
+const active = ref(0);
 </script>
 
 <style lang="less" setup>

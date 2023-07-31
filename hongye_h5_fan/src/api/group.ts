@@ -9,9 +9,9 @@ import { API_GROUP } from "@/config/api/group";
 import store from "@/store";
 import { groupType } from "../interface/model/group";
 interface UseGroupServiceInterface {
-  group(params: groupType.groupState): Promise<boolean>;
-  setgroup(params: groupType.setgroupState): Promise<boolean>;
-  delgroup(params: groupType.setgroupState): Promise<boolean>;
+  group(params: groupType.groupState): Promise<any>;
+  setgroup(params: groupType.setgroupState): Promise<any>;
+  delgroup(params: groupType.setgroupState): Promise<any>;
 }
 
 export const usegroupService = (): UseGroupServiceInterface => {
@@ -22,15 +22,11 @@ export const usegroupService = (): UseGroupServiceInterface => {
       return request
         .get(url, { params })
         .then((res: any) => {
-          // console.log(res);
-          if (res?.data) {
-            store.commit({ type: "group/SAVE_DATA", payload: res?.data });
-          }
-          return true;
+          return Promise.resolve(res);
         })
         .catch((err) => {
           console.error(err);
-          return false;
+          return Promise.reject(err);
         });
     }
     // 修改团购状态
@@ -39,15 +35,11 @@ export const usegroupService = (): UseGroupServiceInterface => {
       return request
         .post(url, params)
         .then((res: any) => {
-          // console.log(res);
-          if (res?.data) {
-            store.commit({ type: "group/SAVE_DATA", payload: res?.data });
-          }
-          return true;
+          return Promise.resolve(res);
         })
         .catch((err) => {
           console.error(err);
-          return false;
+          return Promise.reject(err);
         });
     }
     // 删除团购状态
@@ -56,15 +48,11 @@ export const usegroupService = (): UseGroupServiceInterface => {
       return request
         .delete(url, { params })
         .then((res: any) => {
-          // console.log(res);
-          if (res?.data) {
-            store.commit({ type: "group/SAVE_DATA", payload: res?.data });
-          }
-          return true;
+          return Promise.resolve(res);
         })
         .catch((err) => {
           console.error(err);
-          return false;
+          return Promise.reject(err);
         });
     }
   }
