@@ -5,6 +5,7 @@
       <span>收藏</span>
       <span></span>
     </div>
+    <img src="../publish/m1.png" alt="" />
   </div>
 </template>
 
@@ -12,7 +13,7 @@
 const onClickLeft = () => history.back();
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .navbar {
   color: #fff;
   width: 100%;
@@ -27,5 +28,8 @@ const onClickLeft = () => history.back();
     font-size: 22px;
     padding-top: 20px;
   }
+}
+img {
+  width: 100%;
 }
 </style>

@@ -5,6 +5,7 @@
       <span>历史纪录</span>
       <span></span>
     </div>
+    <img src="../publish/m1.png" alt="" />
   </div>
 </template>
 
@@ -27,5 +28,8 @@ const onClickLeft = () => history.back();
     font-size: 22px;
     padding-top: 20px;
   }
+}
+img {
+  width: 100%;
 }
 </style>
