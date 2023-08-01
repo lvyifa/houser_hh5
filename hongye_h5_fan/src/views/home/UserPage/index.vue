@@ -89,7 +89,7 @@ const myList = [
   {
     title: "联系客服",
     name: "Service",
-    path: "/home/user/cuservice",
+    path: "/renddetailtel",
   },
 ];
 </script>

@@ -10,7 +10,7 @@
         <p>联系方式</p>
         <input type="text" placeholder="请输入手机号" />
       </div>
-      <div class="main_time2">
+      <div class="main_item2">
         <p>反馈内容</p>
         <textarea
           name=""
@@ -19,8 +19,9 @@
           rows="10"
           placeholder="请输入"
         ></textarea>
+        <p class="textnum">0/200</p>
       </div>
-      <button>提交反馈</button>
+      <button class="subutton">提交反馈</button>
     </div>
   </div>
 </template>
@@ -51,7 +52,7 @@ const onClickLeft = () => history.back();
     width: 90%;
     line-height: 30px;
     margin-left: 5%;
-    border-bottom: solid 2px #666;
+    border-bottom: solid 5px #ccc;
     margin-bottom: 10px;
     p {
       font-size: 13px;
@@ -60,7 +61,39 @@ const onClickLeft = () => history.back();
     }
     input {
       margin-left: 20px;
+      border: 0;
     }
+  }
+  .main_item2 {
+    width: 90%;
+    line-height: 30px;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    p {
+      font-size: 13px;
+      color: #555;
+      margin-left: 20px;
+    }
+    textarea {
+      margin-left: 20px;
+      width: 90%;
+      border: solid #ccc 2px;
+    }
+  }
+  .textnum {
+    float: right;
+  }
+  .subutton {
+    width: 60%;
+    height: 50px;
+    margin-left: 20%;
+    margin-top: 10%;
+    background: rgb(254, 104, 106);
+    text-align: center;
+    font-weight: 800;
+    color: #fff;
+    border-radius: 50px;
+    border: 0;
   }
 }
 </style>
