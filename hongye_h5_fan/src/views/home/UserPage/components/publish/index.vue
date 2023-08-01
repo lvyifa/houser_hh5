@@ -5,6 +5,7 @@
       <span>发布</span>
       <span></span>
     </div>
+    <div class="publish_main"></div>
   </div>
 </template>
 
@@ -12,7 +13,7 @@
 const onClickLeft = () => history.back();
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .navbar {
   color: #fff;
   width: 100%;

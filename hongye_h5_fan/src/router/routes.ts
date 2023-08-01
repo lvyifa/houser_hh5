@@ -4,10 +4,12 @@ import footer from "./routes/footer";
 import gird from "./routes/gird";
 import info from "./routes/info";
 import user from "./routes/user";
+import release from "./routes/release";
 export const routes: Array<RouteRecordRaw> = [
   ...gird,
   ...info,
   ...user,
+  ...release,
   {
     path: "/",
     redirect: "/login",

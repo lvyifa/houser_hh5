@@ -47,7 +47,12 @@
       </van-space>
     </div>
     <div class="sign-out">
-      <van-button round type="primary" size="large" color="#FF666E"
+      <van-button
+        round
+        type="primary"
+        size="large"
+        color="#FF666E"
+        @click="backsub"
         >退出登录</van-button
       >
     </div>
@@ -92,6 +97,11 @@ const myList = [
     path: "/renddetailtel",
   },
 ];
+const backsub = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("MIAO_LID");
+  window.location.href = "/login";
+};
 </script>
 
 <style lang="less" scoped>

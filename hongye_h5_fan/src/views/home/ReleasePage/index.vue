@@ -4,7 +4,7 @@
       <span>发 布</span>
     </div>
     <div class="relea_main">
-      <router-link to="/gird/renthouse" class="relea_item">
+      <router-link to="/release/second" class="relea_item">
         <dl>
           <dt>
             <svg
@@ -41,7 +41,7 @@
         </dl>
         <span>&gt;</span>
       </router-link>
-      <router-link to="/gird/renthouse" class="relea_item">
+      <router-link to="/release/havehouse" class="relea_item">
         <dl>
           <dt>
             <svg
@@ -88,7 +88,7 @@
         </dl>
         <span>&gt;</span>
       </router-link>
-      <router-link to="/gird/renthouse" class="relea_item">
+      <router-link to="/release/newhouse" class="relea_item">
         <dl>
           <dt>
             <svg
@@ -184,7 +184,7 @@
             </svg>
           </dt>
           <dd>
-            <b>二手房出售</b>
+            <b>新房出售</b>
             <p>发布二手房出售信息</p>
           </dd>
         </dl>
