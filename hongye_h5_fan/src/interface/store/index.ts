@@ -6,13 +6,19 @@ export namespace BasicTypeInterface {
   }
 }
 
-// store的commit 泛型
-export interface CommitInterface<T> {
-  commit: (type: string, value: any) => void;
-  state: T;
-}
+export namespace StoreManageType {
+  //	store的commit范型
+  export interface CommitInterface<T> {
+    commit: (type: string, value: unknown) => void;
+    state: T;
+  }
 
-// store的IPayload类型;
+  export interface IPayload {
+    type: string;
+    payload?: any;
+  }
+  // store的IPayload类型
+}
 export interface IPayload {
   type: string;
   payload?: any;

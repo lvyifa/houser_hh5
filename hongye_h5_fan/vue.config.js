@@ -1,8 +1,8 @@
 /*
- * @Author: yifan 
- * @Date: 2023-07-31 10:27:29 
- * @Last Modified by:   yifan 
- * @Last Modified time: 2023-07-31 10:27:29 
+ * @Author: yifan
+ * @Date: 2023-07-31 10:27:29
+ * @Last Modified by:   yifan
+ * @Last Modified time: 2023-07-31 10:27:29
  */
 const { defineConfig } = require("@vue/cli-service");
 const dynamicProxyName = process.env.VUE_APP_API_URL;

@@ -1,9 +1,13 @@
 import { createStore } from "vuex";
-import { BasicTypeInterface, CommitInterface } from "@/interface/store";
+import { BasicTypeInterface, StoreManageType } from "@/interface/store";
 
-const createModule = (): BasicTypeInterface.Data<CommitInterface<string>> => {
+const createModule = (): BasicTypeInterface.Data<
+  StoreManageType.CommitInterface<string>
+> => {
   const context = require.context("./modules", true, /\.ts|js$/);
-  const modules: BasicTypeInterface.Data<CommitInterface<string>> = {};
+  const modules: BasicTypeInterface.Data<
+    StoreManageType.CommitInterface<string>
+  > = {};
   context.keys().forEach((key) => {
     const moduleName: string = key.replace(/^\.\/(.*)\.\w+$/, "$1");
     const moduleContext = context(key).default;
