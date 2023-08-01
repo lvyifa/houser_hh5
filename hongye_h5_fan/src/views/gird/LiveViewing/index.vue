@@ -69,7 +69,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="less" setup>
+<style lang="less" scoped>
 .navbar {
   color: #fff;
   width: 100%;

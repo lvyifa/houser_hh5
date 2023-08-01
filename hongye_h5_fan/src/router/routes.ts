@@ -34,6 +34,22 @@ export const routes: Array<RouteRecordRaw> = [
       ),
   },
   {
+    path: "/renddetail",
+    name: "RendDetail",
+    component: () =>
+      import(
+        /* webpackChunkName: "RendDetail" */ "@/views/home/Detail/rend_detail.vue"
+      ),
+  },
+  {
+    path: "/renddetailtel",
+    name: "RendDetailtel",
+    component: () =>
+      import(
+        /* webpackChunkName: "RendDetailtel" */ "@/views/home/Detail/tel.vue"
+      ),
+  },
+  {
     path: "/404",
     name: "NotFound",
     component: () =>

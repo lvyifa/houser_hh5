@@ -7,7 +7,11 @@
       </router-link>
     </div>
     <div class="popular_main">
-      <dl v-for="(item, index) in renddata" :key="index">
+      <dl
+        v-for="(item, index) in renddata"
+        :key="index"
+        @click="godetail(item)"
+      >
         <dt>
           <img
             :src="item.img"
@@ -41,8 +45,11 @@ import { RendService } from "@/api/rend";
 import { onMounted, ref, computed } from "vue";
 import { useStore } from "vuex";
 import { RendManageType } from "@/interface/model/rend";
+import { useRouter } from "vue-router";
+import { toValue } from "vue";
 const store = useStore();
 const Rendservice = RendService();
+const router = useRouter();
 const renddata = ref<Array<RendManageType.renddataState>>([]);
 const pass = async () => {
   const stauts = await Rendservice.rend({
@@ -54,6 +61,10 @@ const pass = async () => {
     renddata.value = stauts.data;
     store.commit({ type: "rend/getrendlist", payload: stauts.data });
   }
+};
+const godetail = (item: RendManageType.renddataState) => {
+  store.commit({ type: "rend/detailrendlist", payload: toValue(item) });
+  router.push("/renddetail");
 };
 
 onMounted(() => {
