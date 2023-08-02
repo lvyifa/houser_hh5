@@ -16,9 +16,10 @@
         </dt>
         <dd>
           <h3>{{ item.house_name }}</h3>
-          <p>{{ item.district }}</p>
+          <p>{{ item.address }}</p>
           <p>
-            <span>活动时间：</span><span>已报名:{{ item.id }}人</span>
+            <span>活动时间：{{ item.start_time }}</span
+            ><span>已报名:12人</span>
           </p>
         </dd>
       </dl>
@@ -46,8 +47,8 @@ const getBrokerList = async () => {
     status: "",
   });
   console.log(stauts);
-  if (stauts.code == 200) {
-    groupdata.value = stauts.data;
+  if (stauts.code == 1) {
+    groupdata.value = stauts.data.data;
   }
 };
 

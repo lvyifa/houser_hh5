@@ -3,6 +3,8 @@ export namespace BrokerManageType {
   export class BrokerSearch {
     telName?: string;
     state?: string;
+    currentPage?: number | 1;
+    pageSize?: number | 10;
   }
   export class BrokerData {
     id: number | undefined;

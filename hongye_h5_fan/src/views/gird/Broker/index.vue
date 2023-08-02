@@ -101,29 +101,32 @@ const brokerListnav3 = ref();
 const brokerListbody = ref();
 const BrokerService = useBrokerService();
 const getBrokerList = async (params: BrokerManageType.BrokerSearch) => {
-  let res = await BrokerService.list(params);
+  let res = await BrokerService.list({
+    currentPage: 1,
+    pageSize: 20,
+  });
   console.log(res);
   brokerList.value = res.data;
   brokerListnav1.value = res.data
     .sort((a: any, b: any) => {
-      return a.renting - b.renting;
+      return a.lease_house - b.lease_house;
     })
     .splice(0, 1);
   brokerListnav2.value = res.data
     .sort((a: any, b: any) => {
-      return a.renting - b.renting;
+      return a.lease_house - b.lease_house;
     })
     .splice(0, 2);
   brokerListnav3.value = res.data
     .sort((a: any, b: any) => {
-      return a.renting - b.renting;
+      return a.lease_house - b.lease_house;
     })
     .splice(0, 3);
   brokerListbody.value = res.data
     .sort((a: any, b: any) => {
-      return a.renting - b.renting;
+      return a.lease_house - b.lease_house;
     })
-    .splice(4, res.data.length - 3);
+    .splice(0, 10);
 };
 
 onMounted(() => {

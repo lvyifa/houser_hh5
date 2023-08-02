@@ -1,7 +1,7 @@
 import { resolveUrl } from "@/utils/common";
 export const API_BROKER = {
-  list: () => resolveUrl("/broker"),
-  del: () => resolveUrl("/del/broker"),
-  edit: () => resolveUrl("/set/BrokerStatus"),
-  add: () => resolveUrl("/add/Broker"),
+  list: () => resolveUrl("/api/v1/broker"),
+  del: () => resolveUrl("/api/v1/broker"),
+  edit: () => resolveUrl("/api/v1/broker"),
+  add: () => resolveUrl("/api/v1/broker"),
 };

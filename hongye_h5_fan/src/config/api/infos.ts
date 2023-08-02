@@ -6,9 +6,9 @@
  */
 import { resolveUrl } from "@/utils/common";
 export const API_infos = {
-  infos: () => resolveUrl("/information"),
-  setinfos: () => resolveUrl("/set/information"),
-  delinfos: () => resolveUrl("/del/information"),
-  addinfos: () => resolveUrl("/addInformation"),
-  editinfos: () => resolveUrl("/editInformation"),
+  infos: () => resolveUrl("/api/v1/infos"),
+  setinfos: () => resolveUrl("/api/v1/infos"),
+  delinfos: () => resolveUrl("/api/v1/infos"),
+  addinfos: () => resolveUrl("/api/v1/infos"),
+  editinfos: () => resolveUrl("/api/v1/infos"),
 };

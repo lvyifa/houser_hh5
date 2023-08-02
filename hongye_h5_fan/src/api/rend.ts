@@ -13,7 +13,7 @@ export const RendService = (): RendServiceInterface => {
     public async rend(params: RendManageType.getrendState) {
       const url = API_REND.rend();
       return request
-        .get(url, { params })
+        .get(url)
         .then((res: any) => {
           return Promise.resolve(res);
         })
