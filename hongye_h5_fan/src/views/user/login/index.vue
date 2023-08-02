@@ -1,5 +1,10 @@
 <template>
   <div class="login-wraper">
+    <img
+      src="https://img1.baidu.com/it/u=3628289042,1343475138&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500"
+      alt=""
+      class="tabimg"
+    />
     <van-form @submit="onSubmit" ref="formRef" :model="formState">
       <van-cell-group inset>
         <van-field
@@ -28,7 +33,7 @@
       </van-cell-group>
       <div style="margin: 16px">
         <van-button round block type="primary" native-type="submit">
-          提交
+          登录
         </van-button>
       </div>
     </van-form>
@@ -89,6 +94,11 @@ onMounted(() => {
 </script>
 
 <style lang="less">
+.tabimg {
+  width: 200px;
+  height: 200px;
+  margin-left: 15%;
+}
 .login-wraper {
   position: absolute;
   top: 0;
@@ -97,12 +107,12 @@ onMounted(() => {
   right: 0;
   margin: auto;
   width: 350px;
-  height: 380px;
+  height: 600px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 45px 40px;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: rgb(158, 254, 249);
   & > .login-head {
     height: 50px;
   }
