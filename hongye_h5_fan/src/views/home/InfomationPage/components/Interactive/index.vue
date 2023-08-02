@@ -46,7 +46,7 @@
 const onClickLeft = () => history.back();
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .navbar {
   color: #fff;
   width: 100%;

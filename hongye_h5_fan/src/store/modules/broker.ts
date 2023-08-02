@@ -1,22 +1,24 @@
-import { IPayload } from "@/interface/store";
-import { BrokerManageType } from "@/interface/model/broker";
+/*
+ * @Author: yifan
+ * @Date: 2023-08-02 16:25:23
+ * @Last Modified by: yifan
+ * @Last Modified time: 2023-08-02 16:27:34
+ */
 
-interface IProductState {
-  type: string;
-  data: BrokerManageType.BrokerData | undefined;
+import { BrokerManageType } from "@/interface/model/broker";
+import { IPayload } from "@/interface/store";
+interface statetype {
+  borkdata: Array<BrokerManageType.BrokerSearch>;
 }
 export default {
   namespaced: true,
-  name: "broker",
+  name: "infos",
   state: {
-    type: "add",
-    data: [],
+    borkdata: [],
   },
   mutations: {
-    UPDATE: (state: IProductState, { payload }: IPayload): void => {
-      // console.log(payload)
-      state.type = payload.type;
-      state.data = payload.data;
+    borklist(state: statetype, { payload }: IPayload) {
+      state.borkdata = payload;
     },
   },
   actions: {},

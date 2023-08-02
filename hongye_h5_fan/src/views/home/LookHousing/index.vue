@@ -373,7 +373,7 @@ const active = ref(0);
 const value = ref("");
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .look_header {
   color: #fff;
   width: 100%;

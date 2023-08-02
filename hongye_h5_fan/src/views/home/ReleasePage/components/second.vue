@@ -217,7 +217,7 @@ const onInput = (value: any) => showToast(value);
 const onDelete = () => showToast("删除");
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .navbar {
   color: #fff;
   width: 100%;

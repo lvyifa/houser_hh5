@@ -233,7 +233,7 @@
 
 <script lang="ts" setup></script>
 
-<style lang="less">
+<style lang="less" scoped>
 .relea_header {
   color: #fff;
   width: 100%;

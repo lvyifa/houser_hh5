@@ -45,7 +45,7 @@ const images = [
 ];
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .home_main {
   width: 100%;
   height: 100%;

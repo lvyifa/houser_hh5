@@ -90,39 +90,30 @@
 <script lang="ts" setup>
 const onClickLeft = () => history.back();
 import { ref, onMounted, computed } from "vue";
-import { BrokerManageType } from "@/interface/model/broker";
-import { useBrokerService } from "@/api/broker";
 import { useStore } from "vuex";
 const store = useStore();
-const brokerList = ref();
+const brokerList = ref(computed(() => store.state.broker.borkdata));
 const brokerListnav1 = ref();
 const brokerListnav2 = ref();
 const brokerListnav3 = ref();
 const brokerListbody = ref();
-const BrokerService = useBrokerService();
-const getBrokerList = async (params: BrokerManageType.BrokerSearch) => {
-  let res = await BrokerService.list({
-    currentPage: 1,
-    pageSize: 20,
-  });
-  console.log(res);
-  brokerList.value = res.data;
-  brokerListnav1.value = res.data
+const getBrokerList = () => {
+  brokerListnav1.value = brokerList.value
     .sort((a: any, b: any) => {
       return a.lease_house - b.lease_house;
     })
     .splice(0, 1);
-  brokerListnav2.value = res.data
+  brokerListnav2.value = brokerList.value
     .sort((a: any, b: any) => {
       return a.lease_house - b.lease_house;
     })
     .splice(0, 2);
-  brokerListnav3.value = res.data
+  brokerListnav3.value = brokerList.value
     .sort((a: any, b: any) => {
       return a.lease_house - b.lease_house;
     })
     .splice(0, 3);
-  brokerListbody.value = res.data
+  brokerListbody.value = brokerList.value
     .sort((a: any, b: any) => {
       return a.lease_house - b.lease_house;
     })
@@ -130,7 +121,7 @@ const getBrokerList = async (params: BrokerManageType.BrokerSearch) => {
 };
 
 onMounted(() => {
-  getBrokerList({});
+  getBrokerList();
   // console.log(brokerListnav1);
 });
 </script>

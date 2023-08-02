@@ -40,7 +40,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" scoped>
 import { onMounted, ref, toRaw } from "vue";
 import { UserManageType } from "@/interface/model/user";
 import { useUserService } from "@/api/user";
