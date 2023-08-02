@@ -52,6 +52,14 @@ export const routes: Array<RouteRecordRaw> = [
       ),
   },
   {
+    path: "/renddetaillive",
+    name: "RenddetailLive",
+    component: () =>
+      import(
+        /* webpackChunkName: "RenddetailLive" */ "@/views/home/Detail/liveexam.vue"
+      ),
+  },
+  {
     path: "/404",
     name: "NotFound",
     component: () =>

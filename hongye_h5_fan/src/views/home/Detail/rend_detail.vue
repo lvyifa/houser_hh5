@@ -178,7 +178,7 @@ const onClickIcon = () => {
   console.log(111);
 };
 const onClickButton = () => {
-  console.log(122);
+  router.push("/renddetaillive");
 };
 const ontelButton = () => {
   router.push("/renddetailtel");
@@ -186,12 +186,9 @@ const ontelButton = () => {
 const BMapGL = window.BMapGL;
 const mapRef = ref();
 onMounted(() => {
-  // rendil.value = toValue(computed(() => store.state.rend.renddetail));
-  // console.log(rendil.value);
   const map = new BMapGL.Map(mapRef.value);
   const point = new BMapGL.Point(116.404, 39.915);
   map.centerAndZoom(point, 10);
-
   var scaleCtrl = new BMapGL.ScaleControl(); // 添加比例尺控件
   map.addControl(scaleCtrl);
   var zoomCtrl = new BMapGL.ZoomControl(); // 添加缩放控件
