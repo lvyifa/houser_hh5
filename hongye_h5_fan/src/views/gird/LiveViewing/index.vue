@@ -8,7 +8,7 @@
     <div class="live_main">
       <van-tabs v-model:active="active" type="card">
         <van-tab v-for="(item1, index) in data" :key="index" :title="item1.tab">
-          <dl v-for="(item, index) in livedata" :key="index">
+          <dl v-for="(item, index) in livedata" :key="index" @click="govr">
             <dt>
               <img
                 src="https://img0.baidu.com/it/u=4130429769,13353809&fm=253&fmt=auto&app=120&f=JPEG?w=750&h=500"
@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 const onClickLeft = () => history.back();
 import { onMounted, ref, computed } from "vue";
-
+import { useRouter } from "vue-router";
 const active = ref(0);
 const data = ref<any>([
   //定义tab的内容进行渲染
@@ -46,6 +46,7 @@ const data = ref<any>([
 import { useLiveService } from "@/api/live";
 import { useStore } from "vuex";
 const store = useStore();
+const router = useRouter();
 const liveService = useLiveService();
 const livedata = ref();
 const getLiveList = async (
@@ -64,6 +65,9 @@ const getLiveList = async (
   }
 };
 
+const govr = () => {
+  router.push("/govr");
+};
 onMounted(() => {
   getLiveList();
 });
