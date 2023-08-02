@@ -30,8 +30,10 @@
       </div>
       <van-grid :border="false" :column-num="2">
         <van-grid-item v-for="(item, index) in gridlist" :key="index">
-          <van-image :src="item.src" class="img_style" />
-          <span>{{ item.text }}</span>
+          <router-link :to="item.url" class="grid_item">
+            <van-image :src="item.src" class="img_style" />
+            <span>{{ item.text }}</span>
+          </router-link>
         </van-grid-item>
       </van-grid>
       <!-- 选择器 -->
@@ -144,11 +146,13 @@ const gridlist: any = [
     src: "https://img0.baidu.com/it/u=1691284005,1744769400&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
     text: "买房",
     key: 0,
+    url: "/gird/buyhouse",
   },
   {
     src: "https://img1.baidu.com/it/u=894066686,4038905447&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
     text: "租房",
     key: 1,
+    url: "/gird/renthouse",
   },
 ];
 //dropdown第二部分
@@ -459,5 +463,10 @@ onMounted(() => {
   width: 100%;
   height: 400px;
   border: solid 2px #000;
+}
+.grid_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

@@ -23,7 +23,10 @@
               <p>{{ item.pp }}--{{ item.xq }}</p>
             </dd>
             <dd class="d2">
-              <button>在线咨询</button><button>拨打电话</button>
+              <button @click="tolive(item.jjr)">在线咨询</button>
+              <router-link to="/renddetailtel">
+                <button>拨打电话</button>
+              </router-link>
             </dd>
           </dl>
         </template>
@@ -48,9 +51,16 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, toValue } from "vue"; //ref
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 const onClickLeft = () => history.back();
 const store = useStore();
 const realdata = ref();
+const router = useRouter();
+const tolive = (jjr: any) => {
+  store.commit({ type: "rend/detailrendlist", payload: { jjr } });
+  console.log(jjr);
+  router.push("/renddetaillive");
+};
 onMounted(() => {
   realdata.value = toValue(computed(() => store.state.rend.renddata));
 });

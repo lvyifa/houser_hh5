@@ -5,6 +5,7 @@ export namespace RendManageType {
     name?: string | undefined;
     pageCount?: number | undefined;
     pageSize?: number | undefined;
+    jiage?: number | undefined;
   }
   export class renddataState {
     id?: string | undefined;

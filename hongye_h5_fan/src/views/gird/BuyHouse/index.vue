@@ -53,10 +53,10 @@
             <nut-cell :style="{ padding: '40px 18px' }">
               <nut-range
                 range
-                v-model="value"
+                v-model="valueprice"
                 @change="onChange"
-                max="1000"
-                min="100"
+                max="10000"
+                min="1000"
               ></nut-range>
             </nut-cell>
           </van-dropdown-item>
@@ -133,31 +133,39 @@
         </van-dropdown-menu>
       </div>
       <div class="popular_main1">
-        <dl v-for="(item, index) in renddata" :key="index">
-          <dt>
-            <img
-              :src="item.img"
-              alt=""
-              onerror="this.src='https://img1.baidu.com/it/u=3477470254,523159555&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'"
-            />
-          </dt>
-          <dd>
-            <p>
-              <b class="tit_b">{{ item.xq }} {{ item.name }}</b>
-            </p>
-            <p>
-              {{ item.mianji }}平/{{ item.ll }}室 {{ item.fangxing }} /
-              {{ item.quyu }}
-            </p>
-            <p>
-              <b class="prive_b">{{ item.jiage }}万</b>
-              <span class="price_s">12100元/m²</span>
-            </p>
-            <p>
-              <button>{{ item.lz }}</button>
-            </p>
-          </dd>
-        </dl>
+        <div v-if="renddata">
+          <dl v-for="(item, index) in renddata" :key="index">
+            <dt>
+              <img
+                :src="item.img"
+                alt=""
+                onerror="this.src='https://img1.baidu.com/it/u=3477470254,523159555&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'"
+              />
+            </dt>
+            <dd>
+              <p>
+                <b class="tit_b">{{ item.xq }} {{ item.name }}</b>
+              </p>
+              <p>
+                {{ item.mianji }}平/{{ item.ll }}室 {{ item.fangxing }} /
+                {{ item.quyu }}
+              </p>
+              <p>
+                <b class="prive_b">{{ item.jiage }}万</b>
+                <span class="price_s">12100元/m²</span>
+              </p>
+              <p>
+                <button>{{ item.lz }}</button>
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <div v-else>
+          <img
+            src="https://hbimg.huabanimg.com/7695323ad7524d5d0e485bc32d80185ee8a2e348fab8-YQKqCE_fw658"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -168,12 +176,14 @@ import { areaList } from "@vant/area-data"; //获取地址数据
 import { showToast } from "@nutui/nutui";
 import { useStore } from "vuex";
 import { ref, computed, onMounted, toValue } from "vue"; //ref
+import { RendService } from "@/api/rend";
 const onClickLeft = () => history.back(); //返回上一页
 const defarea = ref("北京市"); //初始化地址
 const areaflag = ref(false); //默认不显示地址选项
 const menuRef = ref(null); //组件设置
 const itemRef = ref(null); //组件设置
 const store = useStore();
+const renservice = RendService();
 const conarea = (value: any) => {
   //地区选择上边确认按钮
   console.log(value.selectedOptions[0].text);
@@ -191,11 +201,24 @@ const defare = () => {
 };
 
 const areflag = ref(true);
+const area_secher = ref();
 const conarea1 = (value: any) => {
   defarea.value = value.selectedOptions[0].text;
   menuRef.value.close();
+  area_secher.value = value.selectedOptions[2].text;
+  // console.log(value.selectedOptions[2].text);
+  pass();
 };
 
+const pass = async () => {
+  const stauts = await renservice.searchrend({
+    area: area_secher.value,
+  });
+  console.log(stauts);
+  if (stauts.code == 200) {
+    renddata.value = stauts.data;
+  }
+};
 const delconarea1 = (value: any) => {
   areflag.value = false;
 };
@@ -205,6 +228,16 @@ const onConfirm = () => {
 const input_value = ref("");
 const search_name = (value: any) => {
   console.log(input_value.value);
+  pass_input();
+};
+const pass_input = async () => {
+  const stauts = await renservice.searchrend({
+    name: input_value.value,
+  });
+  console.log(stauts);
+  if (stauts.code == 200) {
+    renddata.value = stauts.data;
+  }
 };
 const gridlist: any = [
   {
@@ -224,8 +257,18 @@ const gridlist: any = [
   },
 ];
 //dropdown第二部分
-const value = ref([100, 666]);
-const onChange = (value) => showToast.text("当前值：" + value);
+const valueprice = ref([2000, 6666]);
+const onChange = (valueprice: any) => {
+  // showToast.text("当前值：" + valueprice);
+  console.log(valueprice[0]);
+};
+// 请求后台价格接口
+const passprice = async () => {
+  const stauts = await renservice.searchrend({
+    jiage: area_secher.value,
+  });
+};
+
 //dropdown第三部分
 
 const item3_data1 = ref([
@@ -318,6 +361,7 @@ const onConfirmgroup2 = () => {
 
 const renddata = ref();
 onMounted(() => {
+  pass();
   renddata.value = toValue(computed(() => store.state.rend.renddata));
 });
 </script>
@@ -450,5 +494,9 @@ onMounted(() => {
       }
     }
   }
+}
+img {
+  width: 100%;
+  height: 100%;
 }
 </style>

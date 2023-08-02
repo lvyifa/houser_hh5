@@ -15,7 +15,7 @@
     <div class="file">
       <dl>
         <dt>
-          <van-uploader :after-read="afterRead" />
+          <van-uploader :after-read="afterRead" v-model="fileList" />
         </dt>
         <dd>
           <b>上传图片</b>
@@ -169,11 +169,30 @@
 
 <script lang="ts" setup>
 const onClickLeft = () => history.back();
+import { useUserService } from "@/api/user";
 import { showToast } from "vant";
 import { ref } from "vue";
-const afterRead = (file: any) => {
-  console.log(file);
+const userService = useUserService();
+const fileList = ref<any>([]);
+const afterRead = async (file: any) => {
+  // console.log(file.file);
+  const formData = new FormData();
+  formData.append("file", file.file);
+  const result = await userService.upload(formData);
+  // console.log(result);
+  if (result.code == 1) {
+    fileList.value = [
+      {
+        url: result.img,
+      },
+    ];
+  }
+
+  // formState.value.img = result.imgurl;
+  // 手动清除校验
+  // formRef.value.clearValidate("img");
 };
+
 const titdata = ref([
   {
     tit: "低房价",

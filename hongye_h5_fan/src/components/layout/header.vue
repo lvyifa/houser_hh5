@@ -2,14 +2,14 @@
   <div class="header">
     <div class="nav">宏烨找房</div>
     <van-search
-      v-model="value"
+      v-model="inputdata"
       show-action
       shape="round"
       label="北京吧"
       placeholder="请输入搜索关键词"
       background="linear-gradient(45deg, rgb(92, 116, 241), rgb(86, 178, 254))"
-      @search="onSearch"
       class="search"
+      @keydown="ask"
     >
       <template #action>
         <div @click="onClickButton" class="serachitem">搜索</div>
@@ -18,11 +18,18 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { Toast } from "vant";
 import { ref } from "vue";
-const value = ref("");
-const onClickButton = () => Toast(value.value);
+const inputdata = ref("");
+const onClickButton = () => {
+  console.log(inputdata.value);
+};
+const ask = (keyboard: any) => {
+  if (keyboard.keyCode == 13) {
+    console.log(inputdata.value);
+  }
+};
 </script>
 
 <style lang="less">
