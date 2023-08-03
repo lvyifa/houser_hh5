@@ -132,40 +132,50 @@
           </van-dropdown-item>
         </van-dropdown-menu>
       </div>
+
       <div class="popular_main1">
-        <div v-if="renddata">
-          <dl v-for="(item, index) in renddata" :key="index">
-            <dt>
+        <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+          <van-list
+            v-model:loading="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+          >
+            <div v-if="renddata">
+              <dl v-for="(item, index) in renddata" :key="index">
+                <dt>
+                  <img
+                    :src="item.img"
+                    alt=""
+                    onerror="this.src='https://img1.baidu.com/it/u=3477470254,523159555&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'"
+                  />
+                </dt>
+                <dd>
+                  <p>
+                    <b class="tit_b">{{ item.feature }} {{ item.name }}</b>
+                  </p>
+                  <p>
+                    {{ item.extent }}平/{{ item.ll }}室 {{ item.renovation }} /
+                    {{ item.area }}
+                  </p>
+                  <p>
+                    <b class="prive_b">{{ item.price }}万</b>
+                    <span class="price_s">12100元/m²</span>
+                  </p>
+                  <p>
+                    <button>{{ item.subway }}</button>
+                  </p>
+                </dd>
+              </dl>
+            </div>
+            <div v-else>
               <img
-                :src="item.img"
+                src="https://hbimg.huabanimg.com/7695323ad7524d5d0e485bc32d80185ee8a2e348fab8-YQKqCE_fw658"
                 alt=""
-                onerror="this.src='https://img1.baidu.com/it/u=3477470254,523159555&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'"
               />
-            </dt>
-            <dd>
-              <p>
-                <b class="tit_b">{{ item.feature }} {{ item.name }}</b>
-              </p>
-              <p>
-                {{ item.extent }}平/{{ item.ll }}室 {{ item.renovation }} /
-                {{ item.area }}
-              </p>
-              <p>
-                <b class="prive_b">{{ item.price }}万</b>
-                <span class="price_s">12100元/m²</span>
-              </p>
-              <p>
-                <button>{{ item.subway }}</button>
-              </p>
-            </dd>
-          </dl>
-        </div>
-        <div v-else>
-          <img
-            src="https://hbimg.huabanimg.com/7695323ad7524d5d0e485bc32d80185ee8a2e348fab8-YQKqCE_fw658"
-            alt=""
-          />
-        </div>
+            </div>
+          </van-list>
+        </van-pull-refresh>
       </div>
     </div>
   </div>
@@ -173,7 +183,6 @@
 
 <script lang="ts" setup>
 import { areaList } from "@vant/area-data"; //获取地址数据
-import { showToast } from "@nutui/nutui";
 import { useStore } from "vuex";
 import { ref, computed, onMounted, toValue } from "vue"; //ref
 import { RendService } from "@/api/rend";
@@ -264,7 +273,7 @@ const onChange = (valueprice: any) => {
 // 请求后台价格接口
 const passprice = async () => {
   const stauts = await renservice.searchrend({
-    jiage: area_secher.value,
+    price: area_secher.value,
   });
 };
 
@@ -363,6 +372,56 @@ onMounted(() => {
   pass();
   renddata.value = toValue(computed(() => store.state.rend.renddata));
 });
+//上拉，下拉
+const params = ref<any>({
+  pageSize: 10,
+  currentPage: 1,
+});
+const loading = ref(false);
+const finished = ref(false);
+const refreshing = ref(false);
+const onLoad = () => {
+  let timer = setTimeout(() => {
+    // 定时器仅针对本地数据渲染动画效果,项目中axios请求不需要定时器
+    getRecordList(); // 调用上面方法,请求数据
+    params.value.currentPage++; // 分页数加一
+    clearTimeout(timer); //清除计时器
+  }, 100);
+};
+
+const onRefresh = () => {
+  // 清空列表数据
+  finished.value = false;
+  renddata.value = toValue(computed(() => store.state.rend.renddata));
+  // 重新加载数据
+  // 将 loading 设置为 true，表示处于加载状态
+  loading.value = true;
+
+  onLoad();
+};
+//请求数据
+const getRecordList = async () => {
+  const res = await renservice.rend(params.value);
+
+  // data.value = res.data;
+  if (res.code == 1) {
+    if (res.data.length == 0) {
+      renddata.value = [];
+      finished.value = true;
+    }
+    // 有数据 赋值列表 加载状态结束
+    res.data.forEach((item: any) => renddata.value.push(item));
+    loading.value = false;
+    refreshing.value = false;
+    // 如果list长度大于等于总数据条数，数据全部加载完成
+    if (renddata.value.length >= res.data.total) {
+      finished.value = true; //结束加载
+    }
+  } else {
+    // showToast(res.msg);
+    renddata.value = [];
+  }
+};
 </script>
 
 <style lang="less" setup>
