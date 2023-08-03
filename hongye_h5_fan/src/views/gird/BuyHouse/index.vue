@@ -189,7 +189,7 @@ import { RendService } from "@/api/rend";
 const onClickLeft = () => history.back(); //返回上一页
 const defarea = ref("北京市"); //初始化地址
 const areaflag = ref(false); //默认不显示地址选项
-const menuRef = ref(null); //组件设置
+const menuRef = ref(); //组件设置
 const itemRef = ref(null); //组件设置
 const store = useStore();
 const renservice = RendService();
