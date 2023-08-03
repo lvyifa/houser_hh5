@@ -12,6 +12,8 @@
   "dependencies": {
     "@nutui/nutui": "^4.1.2",
     "@vant/area-data": "^1.4.1",
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-vue": "^5.1.12",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "lodash": "^4.17.21",

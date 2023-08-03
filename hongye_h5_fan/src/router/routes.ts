@@ -74,6 +74,14 @@ export const routes: Array<RouteRecordRaw> = [
       ),
   },
   {
+    path: "/wangedit",
+    name: "Wangedit",
+    component: () =>
+      import(
+        /* webpackChunkName: "Wangedit" */ "@/views/gird/InformationPage/components/wang.vue"
+      ),
+  },
+  {
     path: "/404",
     name: "NotFound",
     component: () =>

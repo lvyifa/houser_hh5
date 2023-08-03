@@ -6,7 +6,7 @@
       <span></span>
     </div>
     <div class="info_main" v-for="(item, index) in info_data" :key="index">
-      <dl>
+      <dl @click="goediter">
         <dt>
           <img
             src="https://img2.baidu.com/it/u=3121709377,2545185790&fm=253&fmt=auto&app=138&f=JPEG?w=717&h=500"
@@ -26,9 +26,14 @@
 import { ref, computed, onMounted, toValue } from "vue";
 import { infosService } from "@/api/infos";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 const onClickLeft = () => history.back();
 const store = useStore();
 const infService = infosService();
+const router = useRouter();
+const goediter = () => {
+  router.push("/wangedit");
+};
 const search = async () => {
   const stat = await infService.infos({
     name: "",
