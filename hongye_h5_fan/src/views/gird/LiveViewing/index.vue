@@ -10,10 +10,7 @@
         <van-tab v-for="(item1, index) in data" :key="index" :title="item1.tab">
           <dl v-for="(item, index) in livedata" :key="index" @click="govr">
             <dt>
-              <img
-                src="https://img0.baidu.com/it/u=4130429769,13353809&fm=253&fmt=auto&app=120&f=JPEG?w=750&h=500"
-                alt=""
-              />
+              <img :src="item.img" alt="" />
             </dt>
             <dd>
               <h3>{{ item.title }}</h3>

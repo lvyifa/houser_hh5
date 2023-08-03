@@ -66,6 +66,14 @@ export const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "Govr" */ "@/views/gird/LiveViewing/vr.vue"),
   },
   {
+    path: "/addimg",
+    name: "Addimg",
+    component: () =>
+      import(
+        /* webpackChunkName: "Addimg" */ "@/views/home/ReleasePage/components/addimg.vue"
+      ),
+  },
+  {
     path: "/404",
     name: "NotFound",
     component: () =>

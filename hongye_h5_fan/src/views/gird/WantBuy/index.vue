@@ -15,23 +15,20 @@
       <div class="seekcell" v-for="(item, index) in seekdata" :key="index">
         <dl>
           <dt>
-            <img
-              src="https://img1.baidu.com/it/u=1244677718,3581533383&fm=253&fmt=auto&app=138&f=PNG?w=500&h=546"
-              alt=""
-            />
+            <img :src="item.img" alt="" />
           </dt>
           <dd>{{ item.name }}</dd>
         </dl>
-        <span>{{ item.created_at }}</span>
+        <span>{{ item.create_time }}</span>
         <p class="p1">
-          北京{{ item.quyu }}区{{ item.xq }}{{ item.ditiie }}{{ item.zf
-          }}{{ item.fangxing }}室
+          北京{{ item.area }}区{{ item.resident }}{{ item.subway
+          }}{{ item.section }}{{ item.renovation }}室
         </p>
         <p class="p2">
           <span class="s1">意向区域：</span>
-          <span class="s2">{{ item.quyu }}</span>
+          <span class="s2">{{ item.area }}</span>
           <span class="s1">意向价格：</span>
-          <span class="s3">{{ item.jiage }}.0/月</span>
+          <span class="s3">{{ item.price }}.0/月</span>
         </p>
       </div>
     </div>

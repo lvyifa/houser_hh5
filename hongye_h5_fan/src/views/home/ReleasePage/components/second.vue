@@ -17,7 +17,7 @@
         <dt>
           <van-uploader :after-read="afterRead" v-model="fileList" />
         </dt>
-        <dd>
+        <dd @click="goaddimg">
           <b>上传图片</b>
           <p>
             只能上传房屋图片,不能包含文字、数字、网址、名字、水印等,所有类别图片共计20张。
@@ -172,25 +172,18 @@ const onClickLeft = () => history.back();
 import { useUserService } from "@/api/user";
 import { showToast } from "vant";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 const userService = useUserService();
+const router = useRouter();
 const fileList = ref<any>([]);
 const afterRead = async (file: any) => {
-  // console.log(file.file);
   const formData = new FormData();
   formData.append("file", file.file);
   const result = await userService.upload(formData);
-  // console.log(result);
+  console.log(result);
   if (result.code == 1) {
-    fileList.value = [
-      {
-        url: result.img,
-      },
-    ];
+    fileList.value.avatar = result.imgurl;
   }
-
-  // formState.value.img = result.imgurl;
-  // 手动清除校验
-  // formRef.value.clearValidate("img");
 };
 
 const titdata = ref([
@@ -234,6 +227,9 @@ const showPopup = () => {
 const show = ref(false);
 const onInput = (value: any) => showToast(value);
 const onDelete = () => showToast("删除");
+const goaddimg = () => {
+  router.push("/addimg");
+};
 </script>
 
 <style lang="less" scoped>

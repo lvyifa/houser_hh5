@@ -88,7 +88,7 @@ export const useUserService = (): UseUserServiceInterface => {
     }
     // 上传图片
     @LoadingDecorator(true)
-    public upload(file: FormData) {
+    public async upload(file: FormData) {
       const url = API_USER.upload();
       return axios
         .post(url, file, {

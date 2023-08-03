@@ -40,7 +40,7 @@
   </div>
 </template>
 
-<script lang="ts" scoped>
+<script lang="ts" setup>
 import { onMounted, ref, toRaw } from "vue";
 import { UserManageType } from "@/interface/model/user";
 import { useUserService } from "@/api/user";
@@ -93,7 +93,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .tabimg {
   width: 200px;
   height: 200px;

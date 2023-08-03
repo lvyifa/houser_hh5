@@ -21,18 +21,18 @@
         </dt>
         <dd>
           <p>
-            <b class="tit_b">{{ item.xq }} {{ item.name }}</b>
+            <b class="tit_b">{{ item.resident }} {{ item.name }}</b>
           </p>
           <p>
-            {{ item.mianji }}平/{{ item.ll }}室 {{ item.fangxing }} /
-            {{ item.quyu }}
+            {{ item.extent }}平/{{ item.house_type }}室/ {{ item.renovation }} /
+            {{ item.area }}
           </p>
           <p>
-            <b class="prive_b">{{ item.jiage }}万</b>
+            <b class="prive_b">{{ item.extent * 12100 }}元</b>
             <span class="price_s">12100元/m²</span>
           </p>
           <p>
-            <button>{{ item.lz }}</button>
+            <button>{{ item.useto }}</button>
           </p>
         </dd>
       </dl>
@@ -57,7 +57,7 @@ const pass = async () => {
     area: "",
   });
   console.log(stauts);
-  if (stauts.code == 200) {
+  if (stauts.code == 1) {
     renddata.value = stauts.data;
     store.commit({ type: "rend/getrendlist", payload: stauts.data });
   }
@@ -128,7 +128,7 @@ onMounted(() => {
         }
         button {
           border: 0;
-          width: 50px;
+          width: 60px;
           background: #ccc;
           opacity: 0.8;
           font-size: 14px;

@@ -14,7 +14,7 @@
           />
         </dt>
         <dd>
-          <p>{{ item.price }}万元{{ item.tit }},谁家这么豪？</p>
+          <p>{{ item.price }}万元{{ item.title }},谁家这么豪？</p>
           <p>{{ item.date }}</p>
         </dd>
       </dl>
@@ -34,7 +34,7 @@ const search = async () => {
     name: "",
     status: "",
   });
-  // console.log(stat);
+  console.log(stat);
   store.commit({ type: "infos/setinfoslist", payload: stat.data });
 };
 

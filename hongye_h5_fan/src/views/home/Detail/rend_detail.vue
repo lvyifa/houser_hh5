@@ -8,15 +8,15 @@
         </dt>
         <dd>
           <p>
-            {{ rendil.name }}{{ rendil.fangxing }}{{ rendil.jiage }}万{{
-              rendil.mianji
+            {{ rendil.name }}-{{ rendil.renovation }}-{{ rendil.price }}万-{{
+              rendil.extent
             }}m²
           </p>
           <p class="dl_red">
-            <b>{{ rendil.jiage }}</b
+            <b>{{ rendil.price }}</b
             >万
-            <b>{{ rendil.fangxing }}</b>
-            <b>{{ rendil.mianji }}</b> m²
+            <b>{{ rendil.renovation }}</b>
+            <b>{{ rendil.extent }}</b> m²
           </p>
         </dd>
       </dl>
@@ -27,27 +27,27 @@
         <van-grid :border="false" :column-num="3">
           <van-grid-item>
             <span>单价</span>
-            <p>{{ rendil.jiage }}元/m²</p>
+            <p>{{ rendil.price }}元/m²</p>
           </van-grid-item>
           <van-grid-item>
             <span>朝向</span>
-            <p>{{ rendil.cx }}</p>
+            <p>{{ rendil.toward }}</p>
           </van-grid-item>
           <van-grid-item>
             <span>装修</span>
-            <p>{{ rendil.zx }}</p>
+            <p>{{ rendil.resident }}</p>
           </van-grid-item>
           <van-grid-item>
             <span>楼层</span>
-            <p>{{ rendil.lz }}/共{{ rendil.ll }}层</p>
+            <p>共{{ rendil.ll }}层</p>
           </van-grid-item>
           <van-grid-item>
             <span>类型</span>
-            <p>{{ rendil.lx }}</p>
+            <p>{{ rendil.renovation }}</p>
           </van-grid-item>
           <van-grid-item>
             <span>更新</span>
-            <p>{{ rendil.zq }}</p>
+            <p>{{ rendil.subway }}</p>
           </van-grid-item>
         </van-grid>
       </div>
@@ -89,11 +89,11 @@
           </dt>
           <dd>
             <p>
-              <span>参 考 均 价:</span><b>{{ rendil.jiage }}</b
+              <span>参 考 均 价:</span><b>{{ rendil.price }}</b
               >元/m²
             </p>
             <p><span>比 上 月:</span> 持平</p>
-            <p><span>小 区 地 址:</span>{{ rendil.xq }}</p>
+            <p><span>小 区 地 址:</span>{{ rendil.area }}</p>
           </dd>
         </dl>
         <p class="p2">查看同小区1套在售房源&gt;</p>
@@ -156,7 +156,7 @@ const store = useStore();
 const router = useRouter();
 const rendil = ref<any>(toValue(computed(() => store.state.rend.renddetail)));
 const active = ref(0);
-const price = parseFloat((rendil.value.jiage / 100).toFixed(2));
+const price = parseFloat((rendil.value.price / 100).toFixed(2));
 //首付
 const pay = parseFloat((price * 0.3).toFixed(2));
 // 贷款
@@ -186,6 +186,8 @@ const ontelButton = () => {
 const BMapGL = window.BMapGL;
 const mapRef = ref();
 onMounted(() => {
+  console.log(rendil);
+
   const map = new BMapGL.Map(mapRef.value);
   const point = new BMapGL.Point(116.404, 39.915);
   map.centerAndZoom(point, 10);

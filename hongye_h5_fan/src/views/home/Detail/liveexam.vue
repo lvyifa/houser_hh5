@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar">
       <span @click="onClickLeft">&lt;</span>
-      <span> {{ jjrdata.jjr }}</span>
+      <span> {{ jjrdata.broker }}</span>
       <span></span>
     </div>
     <div class="liveexam_main">

@@ -144,18 +144,18 @@
             </dt>
             <dd>
               <p>
-                <b class="tit_b">{{ item.xq }} {{ item.name }}</b>
+                <b class="tit_b">{{ item.feature }} {{ item.name }}</b>
               </p>
               <p>
-                {{ item.mianji }}平/{{ item.ll }}室 {{ item.fangxing }} /
-                {{ item.quyu }}
+                {{ item.extent }}平/{{ item.ll }}室 {{ item.renovation }} /
+                {{ item.area }}
               </p>
               <p>
-                <b class="prive_b">{{ item.jiage }}万</b>
+                <b class="prive_b">{{ item.price }}万</b>
                 <span class="price_s">12100元/m²</span>
               </p>
               <p>
-                <button>{{ item.lz }}</button>
+                <button>{{ item.subway }}</button>
               </p>
             </dd>
           </dl>
@@ -215,15 +215,12 @@ const pass = async () => {
     area: area_secher.value,
   });
   console.log(stauts);
-  if (stauts.code == 200) {
+  if (stauts.code == 1) {
     renddata.value = stauts.data;
   }
 };
 const delconarea1 = (value: any) => {
   areflag.value = false;
-};
-const onConfirm = () => {
-  menuRef.value.close();
 };
 const input_value = ref("");
 const search_name = (value: any) => {
@@ -234,9 +231,11 @@ const pass_input = async () => {
   const stauts = await renservice.searchrend({
     name: input_value.value,
   });
-  console.log(stauts);
-  if (stauts.code == 200) {
+  // console.log(stauts);
+  if (stauts.code == 1) {
     renddata.value = stauts.data;
+  } else {
+    renddata.value = "";
   }
 };
 const gridlist: any = [
