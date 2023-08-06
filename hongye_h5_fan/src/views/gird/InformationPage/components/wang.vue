@@ -59,32 +59,32 @@ export default {
       editorRef.value = editor; // 记录 editor 实例，重要！
     };
     type InsertFnType = (url: string, alt: string, href: string) => void;
-    editorConfig.MENU_CONF["uploadImage"] = {
-      server: "http://111.67.201.44:7001/dev/upload",
-      fieldName: "custom-field-name",
-      // 单个文件的最大体积限制，默认为 2M
-      maxFileSize: 10 * 1024 * 1024, // 1M
-      // 最多可上传几个文件，默认为 100
-      maxNumberOfFiles: 100,
-      // 选择文件时的类型限制，默认为 ['image/*'] 。如不想限制，则设置为 []
-      allowedFileTypes: ["image/*"],
-      headers: {
-        otherKey: localStorage.getItem("token"),
-      },
-      // 超时时间，默认为 10 秒
-      timeout: 5 * 1000, // 5 秒
-      // 自定义插入图片
-      customInsert(res: any, insertFn: InsertFnType) {
-        // TS 语法
-        // customInsert(res, insertFn) {                  // JS 语法
-        // res 即服务端的返回结果
+    // editorConfig.MENU_CONF["uploadImage"] = {
+    //   // server: "/upload",
+    //   fieldName: "custom-field-name",
+    //   // 单个文件的最大体积限制，默认为 2M
+    //   maxFileSize: 10 * 1024 * 1024, // 1M
+    //   // 最多可上传几个文件，默认为 100
+    //   maxNumberOfFiles: 100,
+    //   // 选择文件时的类型限制，默认为 ['image/*'] 。如不想限制，则设置为 []
+    //   allowedFileTypes: ["image/*"],
+    //   headers: {
+    //     otherKey: localStorage.getItem("token"),
+    //   },
+    //   // 超时时间，默认为 10 秒
+    //   timeout: 5 * 1000, // 5 秒
+    //   // 自定义插入图片
+    //   customInsert(res: any, insertFn: InsertFnType) {
+    //     // TS 语法
+    //     // customInsert(res, insertFn) {                  // JS 语法
+    //     // res 即服务端的返回结果
 
-        // 从 res 中找到 url alt href ，然后插入图片
-        console.log(res);
+    //     // 从 res 中找到 url alt href ，然后插入图片
+    //     console.log(res);
 
-        // insertFn(res.url, res.url, res.url);
-      },
-    };
+    //     // insertFn(res.url, res.url, res.url);
+    //   },
+    // };
 
     return {
       editorRef,

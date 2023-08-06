@@ -17,10 +17,10 @@
             </dt>
             <dd class="d1">
               <p>
-                {{ item.pp }}--{{ item.jjr
+                {{ item.brand }}--{{ item.broker
                 }}<van-icon name="like" color="red" />
               </p>
-              <p>{{ item.pp }}--{{ item.xq }}</p>
+              <p>{{ item.brand }}--{{ item.resident }}</p>
             </dd>
             <dd class="d2">
               <button @click="tolive(item.jjr)">在线咨询</button>
